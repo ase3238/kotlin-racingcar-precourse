@@ -13,6 +13,7 @@ class RaceController (
         repeat(raceModel.round) {
             runRound()
         }
+        runAward()
     }
 
     private fun initCarList() {
@@ -43,6 +44,11 @@ class RaceController (
             raceModel.runRound()
             raceView.showEachRoundResult(raceModel.carList)
         }
+    }
+
+    private fun runAward() {
+        val winners = raceModel.getWinners()
+        raceView.showWinners(winners)
     }
 
     private fun handleError(e: Exception) {

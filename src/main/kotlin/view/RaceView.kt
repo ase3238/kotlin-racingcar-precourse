@@ -23,8 +23,15 @@ class RaceView {
             repeat(it.distance) {
                 sb.append("-")
             }
-            println(sb.toString())
+            println(sb)
         }
+    }
+
+    fun showWinners(winners: List<String>) {
+        val sb = StringBuilder()
+        sb.append("최종 우승자 : ")
+        sb.append(winners.joinToString(", "))
+        println(sb)
     }
 
     fun showErrorMsg(msg: String) {

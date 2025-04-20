@@ -36,4 +36,9 @@ class RaceModel {
             }
         }
     }
+
+    fun getWinners(): List<String> {
+        val maxDist = carList.maxOfOrNull { it.distance } ?: return emptyList()
+        return carList.filter{ it.distance == maxDist }.map{ it.name }
+    }
 }
