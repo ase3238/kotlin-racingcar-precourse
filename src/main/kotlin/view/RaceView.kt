@@ -13,7 +13,7 @@ class RaceView {
 
 
     fun showRoundResult() {
-        println("실행 결과")
+        println("\n실행 결과")
     }
     fun showEachRoundResult(carList: List<Car>) {
         carList.forEach {
@@ -25,6 +25,7 @@ class RaceView {
             }
             println(sb)
         }
+        println()
     }
 
     fun showWinners(winners: List<String>) {
