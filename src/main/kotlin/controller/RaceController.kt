@@ -10,6 +10,9 @@ class RaceController (
     fun runGame() {
         initCarList()
         initRound()
+        repeat(raceModel.round) {
+            runRound()
+        }
     }
 
     private fun initCarList() {
@@ -31,6 +34,14 @@ class RaceController (
             } catch (e: IllegalArgumentException) {
                 handleError(e)
             }
+        }
+    }
+
+    private fun runRound() {
+        raceView.showRoundResult()
+        repeat(raceModel.round) {
+            raceModel.runRound()
+            raceView.showEachRoundResult(raceModel.carList)
         }
     }
 

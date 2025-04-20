@@ -27,4 +27,8 @@ class RaceModel {
             throw IllegalArgumentException("횟수는 숫자만 입력 가능합니다.")
         }
     }
+
+    fun runRound() {
+        carList.forEach { it.move() }
+    }
 }

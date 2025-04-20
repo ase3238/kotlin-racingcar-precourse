@@ -11,4 +11,14 @@ data class Car (
         }
         return distance
     }
+
+    fun getStatus(): String {
+        val sb = StringBuilder()
+        sb.append(name)
+        sb.append(" : ")
+        repeat(distance) {
+            sb.append("-")
+        }
+        return sb.toString()
+    }
 }
