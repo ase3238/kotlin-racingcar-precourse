@@ -3,6 +3,7 @@ import model.RaceModel
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
 
@@ -11,7 +12,7 @@ class RaceModelTest {
 
     data class TestCase (
         val case: String,
-        val input: Any,
+        val input: Any?,
         val expectError: Boolean,
         val expectResult: Any?,
         val expectErrorMsg: String?,
@@ -62,6 +63,18 @@ class RaceModelTest {
         } else {
             model.initRound(testCase.input as String)
             assertThat(model.round).isEqualTo(testCase.expectResult)
+        }
+    }
+
+    @Test
+    fun testRunRound() {
+        // Given
+        model.initCarList("a,b,c")
+
+        val beforeRun: List<Car> = model.carList.map { it.copy() }
+        model.runRound()
+        model.carList.forEachIndexed { idx, (_, distance) ->
+            assertThat(distance == beforeRun[idx].distance || distance == beforeRun[idx].distance + 1).isTrue()
         }
     }
 }
