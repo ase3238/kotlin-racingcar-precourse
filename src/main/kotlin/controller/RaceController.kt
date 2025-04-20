@@ -10,9 +10,7 @@ class RaceController (
     fun runGame() {
         initCarList()
         initRound()
-        repeat(raceModel.round) {
-            runRound()
-        }
+        runRound()
         runAward()
     }
 
