@@ -4,9 +4,7 @@ import entity.Car
 
 class RaceModel {
     var carList: List<Car> = emptyList()
-        private set
     var round: Int = 0
-        private set
 
     fun initCarList(input: String) {
         if (input.isEmpty()) throw IllegalArgumentException("입력된 이름이 없습니다.")
