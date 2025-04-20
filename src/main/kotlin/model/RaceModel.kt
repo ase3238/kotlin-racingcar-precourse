@@ -37,7 +37,7 @@ class RaceModel {
     }
 
     fun getWinners(): List<String> {
-        val maxDist = carList.maxOfOrNull { it.distance } ?: return emptyList()
+        val maxDist = carList.maxOfOrNull { it.distance } ?: throw IllegalStateException("자동차가 없습니다.")
         return carList.filter{ it.distance == maxDist }.map{ it.name }
     }
 }
