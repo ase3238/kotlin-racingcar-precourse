@@ -4,12 +4,8 @@ data class Car (
     val name: String,
     var distance: Int,
 ) {
-    fun move(): Int {
-        val random = (0..9).random()
-        if (random >= 4) {
-            distance++
-        }
-        return distance
+    fun move() {
+        distance++
     }
 
     fun getStatus(): String {

@@ -29,6 +29,11 @@ class RaceModel {
     }
 
     fun runRound() {
-        carList.forEach { it.move() }
+        carList.forEach {
+            val random = (0..9).random()
+            if (random >= 4) {
+                it.move()
+            }
+        }
     }
 }
