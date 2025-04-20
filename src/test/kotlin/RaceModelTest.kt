@@ -21,8 +21,16 @@ class RaceModelTest {
         @JvmStatic
         fun carListTestCases() = listOf(
             TestCase("on success", "a,b", false, listOf(Car("a",0),Car("b",0)), null),
-            TestCase("empty list", "", true, null, "입력된 이름이 없습니다."),
+            TestCase("empty string", "", true, null, "입력된 이름이 없습니다."),
             TestCase("invalid name", "a,long_string", true, null, "자동차 이름은 5자 이하만 가능합니다.")
+        )
+
+        @JvmStatic
+        fun roundInputTestCases() = listOf(
+            TestCase("on success", "5", false, 5, null),
+            TestCase("empty string", "", true, null, "입력된 횟수가 없습니다."),
+            TestCase("wrong integer", "-1", true, null, "1 이상의 숫자만 입력 가능합니다."),
+            TestCase("wrong string", "a0", true, null, "횟수는 숫자만 입력 가능합니다."),
         )
     }
 
@@ -40,6 +48,19 @@ class RaceModelTest {
                 .hasMessageContaining(testCase.expectErrorMsg)
         } else {
             assertThat(model.initCarList(testCase.input as String))
+                .isEqualTo(testCase.expectResult)
+        }
+    }
+
+    @ParameterizedTest(name = "{0}")
+    @MethodSource("roundInputTestCases")
+    fun testInitRound(testCase: TestCase) {
+        if (testCase.expectError) {
+            assertThatThrownBy { model.initRound(testCase.input as String) }
+                .isInstanceOf(IllegalArgumentException::class.java)
+                .hasMessageContaining(testCase.expectErrorMsg)
+        } else {
+            assertThat(model.initRound(testCase.input as String))
                 .isEqualTo(testCase.expectResult)
         }
     }
