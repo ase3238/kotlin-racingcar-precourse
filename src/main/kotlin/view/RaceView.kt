@@ -17,7 +17,13 @@ class RaceView {
     }
     fun showEachRoundResult(carList: List<Car>) {
         carList.forEach {
-            println(it.getStatus())
+            val sb = StringBuilder()
+            sb.append(it.name)
+            sb.append(" : ")
+            repeat(it.distance) {
+                sb.append("-")
+            }
+            println(sb.toString())
         }
     }
 
