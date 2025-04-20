@@ -8,7 +8,8 @@ class RaceController (
     val raceView: RaceView,
 ) {
     fun runGame() {
-
+        initCarList()
+        initRound()
     }
 
     private fun initCarList() {
@@ -16,6 +17,17 @@ class RaceController (
             try {
                 raceView.showCarInitMsg()
                 raceModel.initCarList(readln())
+            } catch (e: IllegalArgumentException) {
+                handleError(e)
+            }
+        }
+    }
+
+    private fun initRound() {
+        while (raceModel.round > 0) {
+            try {
+                raceView.showRoundInitMsg()
+                raceModel.initRound(readln())
             } catch (e: IllegalArgumentException) {
                 handleError(e)
             }
