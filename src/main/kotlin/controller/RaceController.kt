@@ -28,7 +28,7 @@ class RaceController (
     }
 
     private fun initRound() {
-        while (raceModel.round > 0) {
+        while (raceModel.round < 1) {
             try {
                 raceView.showRoundInitMsg()
                 raceModel.initRound(readln())
