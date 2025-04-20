@@ -11,6 +11,7 @@ class RaceModel {
     fun initCarList(input: String) {
         if (input.isEmpty()) throw IllegalArgumentException("입력된 이름이 없습니다.")
         carList = input.split(",").map {
+            if (it.isEmpty()) throw IllegalArgumentException("입력된 이름이 없습니다.")
             if (it.length > 5) throw IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.")
             Car(it, 0)
         }
