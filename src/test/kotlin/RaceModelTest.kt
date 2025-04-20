@@ -47,8 +47,8 @@ class RaceModelTest {
                 .isInstanceOf(IllegalArgumentException::class.java)
                 .hasMessageContaining(testCase.expectErrorMsg)
         } else {
-            assertThat(model.initCarList(testCase.input as String))
-                .isEqualTo(testCase.expectResult)
+            model.initCarList(testCase.input as String)
+            assertThat(model.carList).isEqualTo(testCase.expectResult)
         }
     }
 
@@ -60,8 +60,8 @@ class RaceModelTest {
                 .isInstanceOf(IllegalArgumentException::class.java)
                 .hasMessageContaining(testCase.expectErrorMsg)
         } else {
-            assertThat(model.initRound(testCase.input as String))
-                .isEqualTo(testCase.expectResult)
+            model.initRound(testCase.input as String)
+            assertThat(model.round).isEqualTo(testCase.expectResult)
         }
     }
 }
