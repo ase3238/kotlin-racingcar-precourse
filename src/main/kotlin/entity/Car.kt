@@ -2,5 +2,13 @@ package entity
 
 data class Car (
     val name: String,
-    val distance: Int,
-)
+    var distance: Int,
+) {
+    fun move(): Int {
+        val random = (0..9).random()
+        if (random >= 4) {
+            distance++
+        }
+        return distance
+    }
+}
